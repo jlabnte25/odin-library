@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    background-color:white;
+    border-bottom: black solid 3px;
+    height: 20px;
+    justify-content: right;
+}
+
+.bookcontainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+}
+
+.book{
+    display:grid;
+    border: black solid 3px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12,1fr);
+}
+/* 
+.star-container {
+    grid-row: 1/2;
+    grid-column: 2/-1;
+} */
+
+.title {
+    grid-row: 2/6;
+    grid-column: 1/-1;
+}
+
+.author {
+    grid-row: 6/7;
+    grid-column: 1/2;
+}
+
+.book-total-page {
+    grid-row:8/9;
+    grid-column: 1/2;
+}
+
+.delete-book {
+    grid-row: 12/13;
+    grid-column: 2/-1;
+}
+/* 
+.progress-container {
+    grid-row: 9/10;
+    grid-column: 1/2;
+}
+
+.review-container {
+    grid-row:10/13;
+    grid-column:1/-1;
+    
+} */
+
+/* Dialog box style */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+dialog {
+    padding: 10px;
+}
+
+dialog p {
+    margin-bottom: 10px;
+}
+
+.header button {
+    display: flex;
+    gap: 10px;
+}
+
+

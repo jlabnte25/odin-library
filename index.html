@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Library</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <button id="open-form">
+            <img src="./plus.png" width="16px">
+            <p>ADD A BOOK</p>
+        </button>
+    </div> 
+
+    <div class="container">
+        <div class="bookContainer">
+                <div class="book">
+                    <!-- <div class="star-container">
+                        <img class="star" src="./star.png" width="16px">
+                        <img class="star" src="./star.png" width="16px">
+                        <img class="star" src="./star.png" width="16px">
+                        <img class="star" src="./star.png" width="16px">
+                        <img class="star" src="./star.png" width="16px">
+                    </div> -->
+           
+                        <p class="title">THE ALCHEMIST</p>
+                        <p class="author">Paulo Coelho</p>
+                        <p class="total-page">200</p>
+                        <button class="delete-book">Delete</button>
+                </div>
+            </div>
+    </div>
+
+    <dialog class="modal" id="dialog">
+        <button id="close-form"><img src="exit.png" width="16px" formmethod="dialog"></button>
+        <form>
+            <input type="text" id="book-title" name="book-title" placeholder="Title" required>
+            <input type="text" id="book-author" name="book-author" placeholder="Author" required>
+            <!-- <input type="text" id="book-current-page" name="book-current-page" placeholder="Your Current Page"> -->
+            <input type="text" id="book-total-page" name="book-total-page" placeholder="Book's Total Pages" required>
+            <!-- <textarea id="book-review" name="book-review" placeholder="Type a quick book review once you're finished"></textarea> -->
+            <button type="submit" id="submit-form">Add book</button>
+        </form>
+    </dialog>
+
+</body>
+
+<script src="script.js"></script>
+</html>
