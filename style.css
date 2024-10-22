@@ -1,65 +1,107 @@
+
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Archivo', sans-serif;
 }
 
+/* Header Style */
 .header {
     display: flex;
     background-color:white;
     border-bottom: black solid 3px;
-    height: 20px;
+    height: 60px;
     justify-content: right;
+    background-color: #f4ed77;
 }
 
-.bookcontainer {
+#open-form {
+    display: flex;        
+    align-items: center; 
+    justify-content: center;
+    gap: 8px;                
+    border: none;          
+    background: none;        
+    cursor: pointer;        
+    padding: 10px;            
+    font-size: 2rem;
+}
+
+#open-form:focus {
+    outline: none;
+}
+
+#open-form p {
+    font-family: "Archivo Black";
+}
+
+#open-form img {
+    width: 2rem;
+}
+
+.bookContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:60px;
+    padding: 40px;
 }
 
 .book{
     display:grid;
     border: black solid 3px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(12,1fr);
+    grid-template-rows: repeat(4,1fr);
+    padding: 15px;
+    border-radius: 10px;
+    gap: 15px;
+    overflow: auto;
 }
-/* 
-.star-container {
-    grid-row: 1/2;
-    grid-column: 2/-1;
-} */
 
 .title {
-    grid-row: 2/6;
-    grid-column: 1/-1;
+    grid-row: 1/3;
+    grid-column: 1/2;
+    font-size: 2rem;
+    font-family: "Archivo Black";
+    margin-bottom: 2rem;
+    color: #b13a20;
 }
 
 .author {
-    grid-row: 6/7;
+    grid-row: 3/4;
     grid-column: 1/2;
+    color: #b13a20;
+    font-family: "Archivo";
 }
 
-.book-total-page {
-    grid-row:8/9;
+.total-page {
+    grid-row:4/5;
     grid-column: 1/2;
+    color: #b13a20;
+    font-family: "Archivo";
 }
 
 .delete-book {
-    grid-row: 12/13;
+    grid-row: 4/5;
     grid-column: 2/-1;
-}
-/* 
-.progress-container {
-    grid-row: 9/10;
-    grid-column: 1/2;
+    width: 2rem;
+    justify-self: end;
+    background: none;
+    border: none;
 }
 
-.review-container {
-    grid-row:10/13;
-    grid-column:1/-1;
-    
-} */
+.trashIcon {
+    width: 2rem;
+}
 
-/* Dialog box style */
+.statusCheckbox {
+    grid-row: 1/2;
+    grid-column: 2/-1;
+    justify-self: end;
+    width: 2rem;
+}
+
+/* Dialog Box Style */
 form {
     display: flex;
     flex-direction: column;
@@ -67,7 +109,19 @@ form {
 }
 
 dialog {
-    padding: 10px;
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    width: 200px;
+}
+
+dialog #close-form {
+    margin-bottom: 15px;
 }
 
 dialog p {

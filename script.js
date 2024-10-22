@@ -1,11 +1,10 @@
 const openBtn = document.getElementById("open-form");
 const closeBtn = document.getElementById("close-form");
-const submitBtn = document.getElementById("submit-form");
 const dialog = document.getElementById("dialog")
 const bookContainer = document.querySelector(".bookContainer");
 
 
-// Controls inside the dialog
+// Enable the opening and closing of the dialog
 openBtn.addEventListener("click", () => {
     dialog.showModal();
 });
@@ -42,33 +41,24 @@ function addBook () {
     newBook.addBook();
 
     //Clear the input 
-   document.getElementById("book-title").value = "";
-   document.getElementById("book-author").value = "";
-   document.getElementById("book-total-page").value = "";
+    document.getElementById("book-title").value = "";
+    document.getElementById("book-author").value = "";
+    document.getElementById("book-total-page").value = "";
 }
 
 
 // Initiate the 'upload' of the form input into the array data and automatically close the dialog
 document.querySelector('form').addEventListener('submit', (event) => {
     event.preventDefault();
-    if (document.getElementById("book-title").value && 
-        document.getElementById("book-author").value && 
-        document.getElementById("book-total-page").value) {
-        
-        addBook(); // Add the book
-        dialog.close(); // Close the dialog
-        displayBook(libraryArray); // Display the updated library
-
-    } else {
-        // This block won't be reached if required fields are empty due to the `required` attribute.
-        alert('Please fill in all required fields.'); 
-    }
+    addBook(); // Add the book
+    dialog.close(); // Close the dialog
+    displayBook(libraryArray); // Display the updated library
 });
-
 
 // Display the book
  function displayBook(libraryArray) {
 
+    // Clear initial display
     bookContainer.innerHTML = '';
 
     // Loop through the libraryArray to display each book
@@ -80,22 +70,30 @@ document.querySelector('form').addEventListener('submit', (event) => {
         // Create a paragraph for the title
         const title = document.createElement("p");
         title.classList.add("title");
-        title.textContent = `Title: ${libraryArray[i].title}`; 
+        title.textContent = `${libraryArray[i].title}`; 
     
         // Create a paragraph for the author
         const author = document.createElement("p");
         author.classList.add("author");
-        author.textContent = `Author: ${libraryArray[i].author}`;
+        author.textContent = `By: ${libraryArray[i].author}`;
     
         // Create a paragraph for the pages
         const pages = document.createElement("p");
-        pages.classList.add("book-total-page"); 
-        pages.textContent = `Pages: ${libraryArray[i].pages}`; 
+        pages.classList.add("total-page"); 
+        pages.textContent = `${libraryArray[i].pages} pages`; 
 
         // Create delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.classList.add("delete-book");
-        deleteBtn.textContent = 'Delete';
+
+        // Create delete icon
+        const trashIcon = document.createElement("img");
+        trashIcon.classList.add("trashIcon");
+        trashIcon.src = "./trash.png";
+        trashIcon.alt = `Delete book ${libraryArray[i].title}`;
+
+        // Append icon to delete button
+        deleteBtn.appendChild(trashIcon);
  
         // Create delete function
         deleteBtn.addEventListener("click", () => {
@@ -103,28 +101,26 @@ document.querySelector('form').addEventListener('submit', (event) => {
             displayBook(libraryArray);
         });
 
-        //Create status button
-        const statusBtn = document.createElement("button");
-        statusBtn.classList.add("status-book");
-        statusBtn.textContent = "Mark as Read";
-        let isRead = false;
-        
-        // Toggle the status on button click
-        statusBtn.addEventListener("click", () => {
-            isRead = !isRead; // Toggle the boolean value
-            statusBtn.textContent = isRead ? "Mark as Unread" : "Mark as Read"; // Update the button text
-            statusBtn.style.backgroundColor = isRead ? "green" : "red"; // Optional: Change background color
-        });
-        
-        // Append the status button to the bookDiv
-        bookDiv.appendChild(statusBtn);
+        // Create a checkbox input
+        const statusCheckbox = document.createElement("input");
+        statusCheckbox.type = "checkbox";
+        statusCheckbox.classList.add("statusCheckbox");
 
+        // Track the read status
+        let isRead = false;
+
+        // Toggle status and background color on change
+        statusCheckbox.addEventListener("change", () => {
+            isRead = statusCheckbox.checked;
+            statusCheckbox.style.backgroundColor = isRead ? "green" : "red"; // Change background color
+        });
  
         // Append all paragraphs to the bookDiv
         bookDiv.appendChild(title);
         bookDiv.appendChild(author);
         bookDiv.appendChild(pages);
         bookDiv.appendChild(deleteBtn);
+        bookDiv.appendChild(statusCheckbox);
     
         // Append the bookDiv to the bookContainer
         bookContainer.appendChild(bookDiv);

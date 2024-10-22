@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Library</title>
     <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="header">
         <button id="open-form">
-            <img src="./plus.png" width="16px">
+            <img src="./plus.png">
             <p>ADD A BOOK</p>
         </button>
     </div> 
@@ -17,19 +25,26 @@
     <div class="container">
         <div class="bookContainer">
                 <div class="book">
-                    <!-- <div class="star-container">
-                        <img class="star" src="./star.png" width="16px">
-                        <img class="star" src="./star.png" width="16px">
-                        <img class="star" src="./star.png" width="16px">
-                        <img class="star" src="./star.png" width="16px">
-                        <img class="star" src="./star.png" width="16px">
-                    </div> -->
-           
-                        <p class="title">THE ALCHEMIST</p>
-                        <p class="author">Paulo Coelho</p>
-                        <p class="total-page">200</p>
-                        <button class="delete-book">Delete</button>
+                        <p class="title">The Alchemist</p>
+                        <p class="author">By: Paulo Coelho</p>
+                        <p class="total-page">208 pages</p>
+                        <input type="checkbox" class="statusCheckbox"></input>
+                        <button class="delete-book"><img class="trashIcon" src="trash.png"></button>
                 </div>
+                <div class="book">
+                    <p class="title">White Knights</p>
+                    <p class="author">By: Fyodor Dostoevsky</p>
+                    <p class="total-page">82 pages</p>
+                    <input type="checkbox" class="statusCheckbox"></input>
+                    <button class="delete-book"><img class="trashIcon" src="trash.png"></button>
+                </div>
+                    <div class="book">
+                    <p class="title">The Metamorphosis</p>
+                    <p class="author">By: Franz Kafka</p>
+                    <p class="total-page">201 pages</p>
+                    <input type="checkbox" class="statusCheckbox"></input>
+                    <button class="delete-book"><img class="trashIcon" src="trash.png"></button>
+                 </div>
             </div>
     </div>
 
@@ -38,9 +53,7 @@
         <form>
             <input type="text" id="book-title" name="book-title" placeholder="Title" required>
             <input type="text" id="book-author" name="book-author" placeholder="Author" required>
-            <!-- <input type="text" id="book-current-page" name="book-current-page" placeholder="Your Current Page"> -->
             <input type="text" id="book-total-page" name="book-total-page" placeholder="Book's Total Pages" required>
-            <!-- <textarea id="book-review" name="book-review" placeholder="Type a quick book review once you're finished"></textarea> -->
             <button type="submit" id="submit-form">Add book</button>
         </form>
     </dialog>
