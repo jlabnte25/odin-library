@@ -126,3 +126,4 @@ document.querySelector('form').addEventListener('submit', (event) => {
         bookContainer.appendChild(bookDiv);
     }
 }
+
