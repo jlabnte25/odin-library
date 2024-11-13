@@ -2,15 +2,12 @@ class CreateBook {
 
     static libraryArray = [];
 
-    constructor (title, author, pages) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
+    constructor(title, author, pages) {
+        Object.assign(this, { title, author, pages });
     }
 
-    addBookToArray () {
+    addBookToArray() {
         CreateBook.libraryArray.push(this);
-        // this.id = CreateBook.libraryArray.indexOf(this);
     }
 }
 
@@ -32,7 +29,7 @@ class AddBook {
     }
 }
 
-class ManageBook{
+class ManageBook {
 
     constructor(){
         this.openBtn = document.getElementById("open-form");
@@ -40,6 +37,7 @@ class ManageBook{
         this.dialog = document.getElementById("dialog")
         this.bookContainer = document.querySelector(".bookContainer");
 
+        // event listeners
         this.openBtn.addEventListener("click", () => {
             dialog.showModal();
         });
@@ -50,9 +48,9 @@ class ManageBook{
 
         document.querySelector('form').addEventListener('submit', (event) => {
             event.preventDefault();
-            AddBook.getBookInfo(); // Add the book
+            AddBook.getBookInfo();
             AddBook.clearBookInputField();
-            this.dialog.close(); // Close the dialog
+            this.dialog.close(); 
             this.displayBook();
         });
     }
