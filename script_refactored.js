@@ -56,12 +56,15 @@ class ManageBook {
       dialog.close();
     });
 
-    document.querySelector("form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      AddBook.getBookInfo();
-      AddBook.clearBookInputField();
-      this.dialog.close();
-      this.displayBook();
+    document.getElementById("book-form").addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      if (validateInput()) {
+        AddBook.getBookInfo();
+        AddBook.clearBookInputField();
+        this.dialog.close();
+        this.displayBook();
+      }
     });
   }
 
@@ -135,3 +138,34 @@ class ManageBook {
 }
 
 const manageBook = new ManageBook();
+
+function validateInput() {
+  const titleInput = document.getElementById("book-title");
+  const authorInput = document.getElementById("book-author");
+  const pagesInput = document.getElementById("book-total-page");
+
+  let isValid = true;
+
+  if (!titleInput.value) {
+    titleInput.setCustomValidity("Please enter book title");
+    isValid = false;
+  } else {
+    titleInput.setCustomValidity("");
+  }
+
+  if (!authorInput.value) {
+    authorInput.setCustomValidity("Please enter book author");
+    isValid = false;
+  } else {
+    authorInput.setCustomValidity("");
+  }
+
+  if (!pagesInput.value) {
+    pagesInput.setCustomValidity("Please enter book pages");
+    isValid = false;
+  } else {
+    pagesInput.setCustomValidity("");
+  }
+
+  return isValid;
+}
